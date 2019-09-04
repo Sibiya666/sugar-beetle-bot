@@ -1,0 +1,41 @@
+{
+  "name": "sugart-better-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r ts-node/register ./src/index.ts"
+  },
+  "author": "sibiya666",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-telegram-bot-api": "^0.31.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.1.0",
+    "node-telegram-bot-api": "^0.30.0"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.3.1",
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.2",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2",
+    "socks5-https-client": "^1.2.1",
+    "https-proxy-agent": "^2.2.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "server"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  }
+}
