@@ -17,7 +17,7 @@ interface IAgentOptions extends http.AgentOptions {
     socksPort: string
 }
 
-export default class SocksBotApi extends BotApi {
+export class SocksBotApi extends BotApi {
     constructor(private token: string, private options?: ISocksConstructorOptions) {
         super(token, options)
     }

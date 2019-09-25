@@ -1,40 +1,24 @@
-import AdminController from './controller/admin';
-// import { UserController } from './controller/user';
-import SocksBotApi from './socks-bot-api/model';
+import { SocksBotApi } from './socks-bot-api/socks-bot-api';
+import { routs } from './routs';
+import { Message} from 'node-telegram-bot-api';
 
-
-export class Router  {
-    routs = {
-        'admin': AdminController,
-        // 'user': UserController
-    };
-    
-    controller: any;
-    controllerName: string;
-    endPoint: string;
-    params: string[];
-
+export class Router {
+    private routs = routs;
+    private rout: string;
+    private endPoint: string;
+    private params: string[];
     constructor(
-        private rout: string,
-        private chatId: number,
-        private bot: SocksBotApi
+        private path: string,
+        private messageFromBot: Message,
+        private bot: SocksBotApi,
     ) {
-        const [controllerName, endPoint, ...params] = rout.split('/');
-        this.controllerName = controllerName;
+        const [rout, endPoint, ...params] = path.split('/');
+        this.rout = rout;
         this.endPoint = endPoint;
         this.params = params;
     }
-    
-    private initController() {
-        this.controller = new this.routs[this.controllerName](this.chatId, this.bot);
-    }
-
-    private initEndPoint() {
-        this.controller[this.endPoint]();
-    }
 
     init() {
-        this.initController();
-        this.initEndPoint()
+        new this.routs[this.rout](this.bot, this.messageFromBot, this.endPoint, this.params);
     }
 }

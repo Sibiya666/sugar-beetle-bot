@@ -1,7 +1,13 @@
-import  { createButtons } from './fabrica.button';
+import  { createTableButtons } from './fabrica.button';
 
-export const userHelpButtons = createButtons([
+export const userHelpButtons = createTableButtons([
     {
-        text: 'Добавить подколку', id: 'add'
-    }
-])
+        text: 'Добавить подколку', id: 'puncture'
+    },
+    {
+        text: 'Добавить замер', id: 'controll'
+    },
+    {
+        text: 'Получить отчет', id: 'report'
+    },
+]);

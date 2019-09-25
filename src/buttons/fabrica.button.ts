@@ -1,4 +1,5 @@
-import { IButton } from "./model.button";
+import { IButton } from "../models/button";
+const keyboardWrapper = require('node-telegram-keyboard-wrapper');
 
 export const createButton = (text: string, id: string) => {
     return {
@@ -27,3 +28,26 @@ export const createButtons = (list: IButton[]) => {
         }
     }
 };
+
+const createTableButton = (button: IButton) => {
+    return { text: button.text, callback_data: button.id }
+};
+
+export const createTableButtons = (items: IButton[]) => {
+    const buttons = new keyboardWrapper.InlineKeyboard();
+    const numbersOfCells  =  items.length;
+
+    for (let i = 0; i < numbersOfCells; i = i + 2) {
+        
+        if (i + 1 < numbersOfCells) {
+            buttons.addRow(
+                createTableButton(items[i]),
+                createTableButton(items[i+1])
+            )
+        } else {
+            buttons.addRow(createTableButton(items[i]))
+        }
+    }
+
+    return buttons.build()
+}
