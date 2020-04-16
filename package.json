@@ -27,7 +27,7 @@
     "ts-node": "^8.3.0",
     "typescript": "^3.6.2",
     "socks5-https-client": "^1.2.1",
-    "https-proxy-agent": "^2.2.1"
+    "https-proxy-agent": "^2.2.3"
   },
   "nodemonConfig": {
     "ignore": [
